@@ -9,18 +9,18 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-whoshere',
-    version='0.1.0',
+    version='0.1.1',
     author='Ilan Steemers',
     author_email='koed00@gmail.com',
     packages=['django_whoshere'],
     url='https://github.com/koed00/django-whoshere',
     license='MIT',
-    description='Django Admin plugin showing who is here and online. Supports GeoIp and user-agents.',
+    description='Django Admin plugin to see who is logged in and active. Supports GeoIp and user-agents.',
     long_description=README,
     include_package_data=True,
     install_requires=['django>=1.7'],
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
