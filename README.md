@@ -16,6 +16,13 @@ A simple Django Admin plugin showing who's logged in and active on your site usi
 ##Installation
 - Make sure you have Django's [Cache](https://docs.djangoproject.com/en/1.8/topics/cache/)  backend set up.
 - Install using pip: `pip install django-whoshere`
+- Add `django_whoshere` to `INSTALLED_APPS` in settings.py:
+```python
+INSTALLED_APPS = (
+    # other apps
+    'django_whoshere',
+)
+```
 - Add `django_whoshere.middelware.TrackMiddleware` to your `MIDDLEWARE_CLASSES`. 
 Make sure it comes after your Authentication middleware.
 
