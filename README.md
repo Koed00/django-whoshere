@@ -1,5 +1,5 @@
 #Django WhosHere
-A simple Django Admin plugin showing who's logged in and active on your site using the cache. Supports [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/) and [user-agents](https://github.com/selwin/python-user-agents) .
+A lightweight Django Admin plugin showing who's logged in and active on your site using the cache. Supports [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/) and [user-agents](https://github.com/selwin/python-user-agents) .
 
 ##Requirements
 
@@ -8,10 +8,8 @@ A simple Django Admin plugin showing who's logged in and active on your site usi
 ####Optional
 
 - [user-agents](https://github.com/selwin/python-user-agents)  Adds nicer user agent formatting
-
+- [django-ipware](https://github.com/un33k/django-ipware) More robust way of determining a users IP
 - [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/)  Looks up City and Country based on IP
-
-- [django-geoip-utils](https://github.com/Gidsy/django-geoip-utils) The lazy way of setting up GeoIP for your project
 
 ##Installation
 - Make sure you have Django's [Cache](https://docs.djangoproject.com/en/1.8/topics/cache/)  backend set up.
@@ -37,6 +35,7 @@ MIDDLEWARE_CLASSES = (
 ```  
 ####Optional
 - Install  [user-agents](https://github.com/selwin/python-user-agents) for nicer user agent formatting
+- Install [django-ipware](https://github.com/un33k/django-ipware) for a better way to determine real ip addresses.
 - Configure [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/)  or just install [django-geoip-utils](https://github.com/Gidsy/django-geoip-utils)  for geo location of your users
 
 ##Configuration
