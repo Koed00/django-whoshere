@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.cache import cache
+from django_whoshere.apps import PREFIX
 
 try:
     from user_agents import parse
@@ -21,7 +22,7 @@ class UserSession(User):
 
     @property
     def key(self):
-        return 'whoshere:{}'.format(self.pk)
+        return '{}:{}'.format(PREFIX, self.pk)
 
     @property
     def ip(self):

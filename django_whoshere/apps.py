@@ -11,6 +11,11 @@ try:
 except AttributeError:
     TIMEOUT = 300
 
+try:
+    PREFIX = settings.WHOSHERE_PREFIX
+except AttributeError:
+    PREFIX = 'whoshere'
+
 
 class SessionAdminConfig(AppConfig):
     name = 'django_whoshere'
