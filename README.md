@@ -46,6 +46,8 @@ No configuration is needed but these settings are provided for convenience:
 Sets the timeout for user activity. Defaults to 300 seconds.
 - `WHOSHERE_LABEL='Active Users'`
 Overrides the admin link label. Defaults to 'Active Users'
+- `WHOSHERE_PREFIX='whoshere'`
+Prefix used in cache keys. Defaults to 'whoshere'.
 
 ##Notes
 - Middleware is kept as small as possible and only adds IP and User Agent to the cache for the current logged in user.
