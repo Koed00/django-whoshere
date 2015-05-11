@@ -21,7 +21,7 @@ class UserSession(User):
 
     @property
     def key(self):
-        return 'tracker:{}'.format(self.pk)
+        return 'whoshere:{}'.format(self.pk)
 
     @property
     def ip(self):

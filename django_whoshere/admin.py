@@ -1,24 +1,15 @@
-from importlib import import_module
-
-from django.conf import settings
 from django.contrib import admin
-
+from django.conf import settings
 from django.contrib.gis.geoip import HAS_GEOIP
 
 from django_whoshere.models import UserSession
 
 
-try:
-    from user_agents import parse
-except ImportError:
-    parse = None
 if HAS_GEOIP:
     try:
         GEOIP_PATH = settings.GEOIP_PATH
     except AttributeError:
         GEOIP_PATH = None
-
-SessionStore = import_module(settings.SESSION_ENGINE).SessionStore
 
 
 class UserSessionAdmin(admin.ModelAdmin):
@@ -48,5 +39,6 @@ class UserSessionAdmin(admin.ModelAdmin):
     if HAS_GEOIP and GEOIP_PATH:
         list_display.insert(3, 'city')
         list_display.insert(4, 'country')
+
 
 admin.site.register(UserSession, UserSessionAdmin)
