@@ -15,7 +15,7 @@ setup(
     packages=['django_whoshere'],
     url='https://github.com/koed00/django-whoshere',
     license='MIT',
-    description='. Supports GeoIp.',
+    description='Django Admin plugin showing who is here and online. Supports GeoIp and user-agents.',
     long_description=README,
     include_package_data=True,
     install_requires=['django>=1.7'],
