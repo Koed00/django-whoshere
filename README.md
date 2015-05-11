@@ -1,5 +1,6 @@
 #Django WhosHere
-A lightweight Django Admin plugin showing who's logged in and active on your site using the cache. Supports [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/) and [user-agents](https://github.com/selwin/python-user-agents) .
+A lightweight Django Admin plugin showing who's logged in and active on your site using the cache. 
+Supports [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/), [django-ipware](https://github.com/un33k/django-ipware) and [user-agents](https://github.com/selwin/python-user-agents) .
 
 ##Requirements
 
