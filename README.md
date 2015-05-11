@@ -35,8 +35,8 @@ MIDDLEWARE_CLASSES = (
 ##Configuration
 No configuration is needed but these settings are provided for convenience:
 
-- `WHOSHERE_TIMEOUT=300`  
-Sets the timeout on when users are considered idle. Defaults to 300 seconds.
+- `WHOSHERE_TIMEOUT=300`
+Sets the timeout for user activity. Defaults to 300 seconds.
 - `WHOSHERE_LABEL='Active Users'`
 Overrides the admin link label. Defaults to 'Active Users'
 
