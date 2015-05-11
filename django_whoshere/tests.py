@@ -31,6 +31,7 @@ class WhosHereTestCase(TestCase):
 
     def tearDown(self):
         self.user.delete()
+        cache.delete(self.key)
 
     def test_user_request(self):
         request = self.factory.get('/', HTTP_USER_AGENT=self.user_agent)
