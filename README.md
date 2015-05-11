@@ -12,6 +12,7 @@ A simple Django Admin plugin showing who's logged in and active on your site usi
 - [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/)  Looks up City and Country based on IP
 
 - [django-geoip-utils](https://github.com/Gidsy/django-geoip-utils) The lazy way of setting up GeoIP for your project
+
 ##Installation
 - Make sure you have Django's [Cache](https://docs.djangoproject.com/en/1.8/topics/cache/)  backend set up.
 - Install using pip: `pip install django-whoshere`
@@ -34,7 +35,7 @@ MIDDLEWARE_CLASSES = (
 ##Configuration
 No configuration is needed but these settings are provided for convenience:
 
-- `WHOSWHERE_TIMEOUT=300`  
+- `WHOSHERE_TIMEOUT=300`  
 Sets the timeout on when users are considered idle. Defaults to 300 seconds.
 - `WHOSHERE_LABEL='Active Users'`
 Overrides the admin link label. Defaults to 'Active Users'
