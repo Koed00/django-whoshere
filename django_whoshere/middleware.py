@@ -4,8 +4,12 @@ from django_whoshere.apps import TIMEOUT, PREFIX
 
 
 def get_ip(request):
+    """
+    Uses ipware to find real ip address if available.
+    """
     try:
         from ipware.ip import get_real_ip
+
         return get_real_ip(request) or request.META.get('REMOTE_ADDR', '')
     except ImportError:
         return request.META.get('REMOTE_ADDR', '')

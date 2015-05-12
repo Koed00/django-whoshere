@@ -1,27 +1,12 @@
-from django.conf import settings
 from django.contrib.auth.models import User
+
 from django.core.cache import cache
 from django.test import TestCase, RequestFactory
-from django_whoshere.apps import PREFIX
+
+from django_whoshere.apps import PREFIX, parse
 
 from django_whoshere.middleware import TrackMiddleware
 from django_whoshere.models import UserSession
-
-
-try:
-    from user_agents import parse
-except ImportError:
-    parse = None
-from django.contrib.gis.geoip import HAS_GEOIP
-
-if HAS_GEOIP:
-    try:
-        from django.contrib.gis.geoip import GeoIP
-        GEOIP_PATH = settings.GEOIP_PATH
-    except ImportError:
-        GeoIP = None
-    except AttributeError:
-        GEOIP_PATH = None
 
 
 class WhosHereTestCase(TestCase):
@@ -31,6 +16,7 @@ class WhosHereTestCase(TestCase):
                                              'secretsecretsquirrel')
         self.key = '{}:{}'.format(PREFIX, self.user.pk)
         self.user_agent = 'Mozilla/5.0'
+        cache.delete(self.key)
 
     def tearDown(self):
         self.user.delete()
@@ -48,10 +34,8 @@ class WhosHereTestCase(TestCase):
         else:
             self.assertEqual(active_user.user_agent, self.user_agent)
 
-        if HAS_GEOIP and GEOIP_PATH:
-            self.assertEqual(active_user.city(), 'unknown')
-            self.assertEqual(active_user.country(), 'unknown')
-
+        self.assertEqual(active_user.city(), 'unknown')
+        self.assertEqual(active_user.country(), 'unknown')
         self.assertEqual(UserSession.active_user_ids(), [1])
         self.assertEqual(UserSession.active_users()[0], self.user)
         self.assertEqual(UserSession.active_user_count(), 1)

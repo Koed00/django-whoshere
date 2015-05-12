@@ -1,15 +1,7 @@
 from django.contrib import admin
-from django.conf import settings
-from django.contrib.gis.geoip import HAS_GEOIP
+from django_whoshere.apps import TELIZE, GeoIP
 
 from django_whoshere.models import UserSession
-
-
-if HAS_GEOIP:
-    try:
-        GEOIP_PATH = settings.GEOIP_PATH
-    except AttributeError:
-        GEOIP_PATH = None
 
 
 class UserSessionAdmin(admin.ModelAdmin):
@@ -36,9 +28,8 @@ class UserSessionAdmin(admin.ModelAdmin):
         return list(self.readonly_fields) + \
                [field.name for field in obj._meta.fields]
 
-    if HAS_GEOIP and GEOIP_PATH:
-        list_display.insert(3, 'city')
-        list_display.insert(4, 'country')
-
+    if GeoIP or TELIZE:
+        list_display.insert(2, 'city')
+        list_display.insert(3, 'country')
 
 admin.site.register(UserSession, UserSessionAdmin)

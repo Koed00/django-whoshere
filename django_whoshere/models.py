@@ -1,18 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.cache import cache
-from django_whoshere.apps import PREFIX
 
-try:
-    from user_agents import parse
-except ImportError:
-    parse = None
-from django.contrib.gis.geoip import HAS_GEOIP
-
-if HAS_GEOIP:
-    try:
-        from django.contrib.gis.geoip import GeoIP
-    except ImportError:
-        GeoIP = None
+from django_whoshere.apps import PREFIX, GeoIP, parse, telize_lookup
 
 
 class UserSession(User):
@@ -37,16 +26,20 @@ class UserSession(User):
             return self.track['agent']
 
     def city(self):
-        geo = GeoIP().city(str(self.ip))
-        if geo and geo['city']:
-            return geo['city']
-        return 'unknown'
+        if GeoIP:
+            geo = GeoIP().city(str(self.ip))
+            if geo and geo['city']:
+                return geo['city']
+            return 'unknown'
+        return telize_lookup(self.ip)['city']
 
     def country(self, ):
-        geo = GeoIP().city(str(self.ip))
-        if geo and geo['country_name']:
-            return geo['country_name']
-        return 'unknown'
+        if GeoIP:
+            geo = GeoIP().city(str(self.ip))
+            if geo and geo['country_name']:
+                return geo['country_name']
+            return 'unknown'
+        return telize_lookup(self.ip)['country']
 
     @staticmethod
     def active_user_ids():
