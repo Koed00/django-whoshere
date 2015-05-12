@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.cache import cache
 from django.test import TestCase, RequestFactory
@@ -16,9 +17,11 @@ from django.contrib.gis.geoip import HAS_GEOIP
 if HAS_GEOIP:
     try:
         from django.contrib.gis.geoip import GeoIP
+        GEOIP_PATH = settings.GEOIP_PATH
     except ImportError:
-
         GeoIP = None
+    except AttributeError:
+        GEOIP_PATH = None
 
 
 class WhosHereTestCase(TestCase):
@@ -45,7 +48,7 @@ class WhosHereTestCase(TestCase):
         else:
             self.assertEqual(active_user.user_agent, self.user_agent)
 
-        if HAS_GEOIP and GeoIP:
+        if HAS_GEOIP and GEOIP_PATH:
             self.assertEqual(active_user.city(), 'unknown')
             self.assertEqual(active_user.country(), 'unknown')
 
