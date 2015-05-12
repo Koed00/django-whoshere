@@ -59,6 +59,7 @@ This comes with some caveats:
 
 - The [Telize](https://www.telize.com) API is [opensource](https://github.com/fcambus/telize), but you are sending users IP addresses, albeit anonymously, to a third party.
 - Being a free API it can sometimes be unavailable or slow
+- Your server needs HTTPS access to a remote location
 
 You can turn off Telize lookups with `WHOSHERE_TELIZE =  False` in your `settings.py` or by installing and configuring GeoIP.
 
