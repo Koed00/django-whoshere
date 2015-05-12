@@ -22,6 +22,7 @@ class UserSessionAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
+    search_fields = ['username','first_name', 'last_name']
     readonly_fields = []
 
     def get_readonly_fields(self, request, obj=None):
