@@ -41,13 +41,13 @@ MIDDLEWARE_CLASSES = (
 ##Configuration
 No configuration is needed but these settings are provided for convenience:
 
-- `WHOSHERE_TIMEOUT=300`
+- `WHOSHERE_TIMEOUT = 300`
 Sets the timeout for user activity. Defaults to 300 seconds.
-- `WHOSHERE_LABEL='Active Users'`
+- `WHOSHERE_LABEL = 'Active Users'`
 Overrides the admin link label. Defaults to 'Active Users'
-- `WHOSHERE_PREFIX='whoshere'`
+- `WHOSHERE_PREFIX = 'whoshere'`
 Prefix used in cache keys. Defaults to 'whoshere'.
-- `WHOSHERE_TELIZE='True'`
+- `WHOSHERE_TELIZE = True`
 You can set this to 'False' to turn off geolocation lookups with   [Telize](https://www.telize.com).
 Is always off if GeoIp is installed.
 
@@ -60,7 +60,7 @@ This comes with some caveats:
 - The [Telize](https://www.telize.com) API is [opensource](https://github.com/fcambus/telize), but you are sending users IP addresses, albeit anonymously, to a third party.
 - Being a free API it can sometimes be unavailable or slow
 
-You can turn off Telize lookups with `WHOSHERE_TELIZE='False'` in your `settings.py` or by installing and configuring GeoIP.
+You can turn off Telize lookups with `WHOSHERE_TELIZE =  False` in your `settings.py` or by installing and configuring GeoIP.
 
 ##Notes
 - Middleware is kept as small as possible and only adds IP and User Agent to the cache for the current logged in user.
