@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-whoshere',
-    version='0.1.3',
+    version='0.1.4',
     author='Ilan Steemers',
     author_email='koed00@gmail.com',
     packages=['django_whoshere'],
@@ -18,7 +18,7 @@ setup(
     description='Lightweight Django Admin plugin to see who is logged in and active. Supports Telize.com, GeoIp , user-agents and django-ipware.',
     long_description=README,
     include_package_data=True,
-    install_requires=['django>=1.7'],
+    install_requires=['django>=1.7', 'requests'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',

@@ -1,5 +1,7 @@
 #Changelog
 
+###0.1.4
+- Replaced urllib with requests for better ssl support
 ###0.1.3
  - Added geolocation with Telize
 

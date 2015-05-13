@@ -1,11 +1,7 @@
-import urllib
-import json
-from urllib2 import URLError
-
 from django.apps import AppConfig
 from django.conf import settings
 from django.core.cache import cache
-
+import requests
 
 # Sets the label name in the admin
 try:
@@ -62,11 +58,11 @@ def telize_lookup(ip):
     if cache.get(key):
         return cache.get(key)
     try:
-        response = urllib.urlopen('https://www.telize.com/geoip/{}'.format(ip))
-    except URLError:
+        request = requests.get('https://www.telize.com/geoip/{}'.format(ip))
+    except requests.exceptions.RequestException:
         location = {'city': 'error', 'country': 'error'}
     else:
-        data = json.loads(response.read())
+        data = request.json()
         location = {'city': data.get('city', 'unknown'), 'country': data.get('country', 'unknown')}
         cache.set(key, location, TIMEOUT)
     return location

@@ -1,10 +1,8 @@
 from django.contrib.auth.models import User
-
 from django.core.cache import cache
 from django.test import TestCase, RequestFactory
 
 from django_whoshere.apps import PREFIX, parse
-
 from django_whoshere.middleware import TrackMiddleware
 from django_whoshere.models import UserSession
 

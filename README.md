@@ -1,9 +1,11 @@
 #Django WhosHere
 A lightweight Django Admin plugin showing who's logged in from where using the cache. 
 Supports [Telize](https://www.telize.com), [django-ipware](https://github.com/un33k/django-ipware), [user-agents](https://github.com/selwin/python-user-agents)  and [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/)
+
 ##Requirements
 
 - [Django](https://www.djangoproject.com) >= 1.7
+- [requests](https://github.com/kennethreitz/requests)
 
 ####Optional
 
@@ -68,6 +70,7 @@ You can turn off Telize lookups with `WHOSHERE_TELIZE =  False` in your `setting
 - No database tables are used. Instead WhosHere uses a proxy model of the User model.
 - Proxy models will create migrations but do not affect your database
 - Telize lookups are cached for performance
+- Using the excellent requests library for better SSL support
 
 ##Todo
 - Add tests
