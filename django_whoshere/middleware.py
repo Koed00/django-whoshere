@@ -1,21 +1,10 @@
+from builtins import object
 from django.core.cache import cache
 
-from django_whoshere.apps import TIMEOUT, PREFIX
+from django_whoshere.apps import TIMEOUT, PREFIX, get_ip
 
 
-def get_ip(request):
-    """
-    Uses ipware to find real ip address if available.
-    """
-    try:
-        import ipware.ip
-
-        return ipware.ip.get_real_ip(request) or request.META.get('REMOTE_ADDR', '')
-    except ImportError:
-        return request.META.get('REMOTE_ADDR', '')
-
-
-class TrackMiddleware:
+class TrackMiddleware(object):
     def __init__(self):
         pass
 

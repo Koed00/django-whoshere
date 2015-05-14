@@ -1,7 +1,9 @@
+from builtins import object
+
 from django.contrib.auth.models import User
 from django.core.cache import cache
 
-from django_whoshere.apps import PREFIX, GeoIP, parse, telize_lookup
+from django_whoshere.apps import PREFIX, parse, get_city, get_country
 
 
 class UserSession(User):
@@ -40,30 +42,20 @@ class UserSession(User):
 
     def city(self):
         """ Return city name using Telize or Geoip."""
-        if GeoIP:
-            geo = GeoIP().city(str(self.ip))
-            if geo and geo['city']:
-                return geo['city']
-            return 'unknown'
-        return telize_lookup(self.ip)['city']
+        return get_city(self.ip)
 
     def country(self, ):
         """
         Returns country name using Telize or GeoIP
         """
-        if GeoIP:
-            geo = GeoIP().city(str(self.ip))
-            if geo and geo['country_name']:
-                return geo['country_name']
-            return 'unknown'
-        return telize_lookup(self.ip)['country']
+        return get_country(self.ip)
 
     @staticmethod
     def active_user_ids():
         """
         returns a list of currently tracked user id's
         """
-        return [user.id for user in UserSession.objects.all() if user.track]
+        return [user.id for user in UserSession.active_users()]
 
     @staticmethod
     def active_users():
@@ -75,9 +67,9 @@ class UserSession(User):
     @staticmethod
     def active_user_count():
         """
-        returns the number of currently trackers users
+        returns the number of currently tracked users
         """
         return len(UserSession.active_user_ids())
 
-    class Meta:
+    class Meta(object):
         proxy = True

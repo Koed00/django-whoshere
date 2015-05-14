@@ -1,3 +1,4 @@
+from builtins import str
 from django.apps import AppConfig
 from django.conf import settings
 from django.core.cache import cache
@@ -66,3 +67,39 @@ def telize_lookup(ip):
         location = {'city': data.get('city', 'unknown'), 'country': data.get('country', 'unknown')}
         cache.set(key, location, TIMEOUT)
     return location
+
+
+def get_ip(request):
+    """
+    Uses ipware to find real ip address if available.
+    """
+    try:
+        import ipware.ip
+
+        return ipware.ip.get_real_ip(request) or request.META.get('REMOTE_ADDR', '')
+    except ImportError:
+        return request.META.get('REMOTE_ADDR', '')
+
+
+def get_city(ip):
+    """
+    Gets city location by ip either with Telize or GeoIP
+    """
+    if GeoIP:
+        geo = GeoIP().city(str(ip))
+        if geo and geo['city']:
+            return geo['city']
+        return 'unknown'
+    return telize_lookup(ip)['city']
+
+
+def get_country(ip):
+    """
+    Gets country location by ip either with Telize or GeoIP
+    """
+    if GeoIP:
+        geo = GeoIP().country(str(ip))
+        if geo and geo['country_name']:
+            return geo['country_name']
+        return 'unknown'
+    return telize_lookup(ip)['country']
