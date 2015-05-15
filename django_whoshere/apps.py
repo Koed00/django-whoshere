@@ -1,4 +1,3 @@
-from builtins import str
 from django.apps import AppConfig
 from django.conf import settings
 from django.core.cache import cache

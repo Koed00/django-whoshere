@@ -53,6 +53,25 @@ Prefix used in cache keys. Defaults to 'whoshere'.
 You can set this to 'False' to turn off geolocation lookups with   [Telize](https://www.telize.com).
 Is always off if GeoIp is installed.
 
+##Template tags
+Besides the admin interface, WhosHere's functions are also available as template tags:
+```html+django
+{% load whoshere %}
+
+There are now {% active_user_count %} users logged in.
+
+{% active_users as users %}
+<ul>
+{% for user in users %}
+   <li>{{ user.username }} ({{ user.email }})</li>
+{% endfor %}
+</ul>
+
+<p>Your IP address is {% your_ip %}</p>
+<p>Your browser and platform is {% your_agent %}</p>
+<p>You live in {% your_city %}, {% your_country %}</p>
+```
+
 ##Geolocation
 Originally this plugin started with GeoIP support only, but this means you have to install the rather large database that it comes with. 
 Not a problem if you already use it for other things, but not a lightweight solution if you only use it for WhosHere.

@@ -1,4 +1,3 @@
-from builtins import object
 from django.core.cache import cache
 
 from django_whoshere.apps import TIMEOUT, PREFIX, get_ip
