@@ -19,6 +19,7 @@ setup(
     long_description=README,
     include_package_data=True,
     install_requires=['django>=1.7', 'requests'],
+    test_suite='runtests.runtests',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',

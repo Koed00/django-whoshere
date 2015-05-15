@@ -12,10 +12,8 @@ env:
     - DJANGO=1.7.8
 
 install:
-  - pip install -q Django==$DJANGO --use-mirrors
+  - pip install -q django==$DJANGO --use-mirrors
   - python setup.py install
 
 script:
-  - django-admin test
-services:
-  - redis
+  - python setup.py test
