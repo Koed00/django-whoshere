@@ -5,15 +5,17 @@ python:
   - "3.4"
 
 env:
-  - DJANGO=1.8.1 DJANGO_SETTINGS_MODULE="djano_whoshere.tests.settings"
-  - DJANGO=1.7.8 DJANGO_SETTINGS_MODULE="djano_whoshere.tests.settings"
+  global: DJANGO_SETTINGS_MODULE="django_whoshere.tests.settings"
+  - DJANGO=1.8.1
+  - DJANGO=1.7.8
+
 install:
   - pip install -q Django==$DJANGO --use-mirrors
   - python setup.py install
 
 before_script:
-  - python manage.py migrate
-
+  - django-admin migrate
 script:
-  - python manage.py test
-services: redis
+  - django-admin test
+services:
+  - redis
