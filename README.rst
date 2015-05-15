@@ -1,5 +1,5 @@
-Django WhosHere
-===============
+Django WhosHere |image0|
+========================
 
 A lightweight Django Admin plugin showing who's logged in from where
 using the cache. Supports `Telize <https://www.telize.com>`__,
@@ -176,3 +176,4 @@ Todo
 -  Add tests
 -  Think of other things to add
 
+.. |image0| image:: https://travis-ci.org/Koed00/django-whoshere.svg?branch=master
