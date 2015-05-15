@@ -5,9 +5,11 @@ python:
   - "3.4"
 
 env:
-  global: DJANGO_SETTINGS_MODULE="django_whoshere.tests.settings"
-  - DJANGO=1.8.1
-  - DJANGO=1.7.8
+  global:
+    - DJANGO_SETTINGS_MODULE="django_whoshere.tests.settings"
+  matrix:
+    - DJANGO=1.8.1
+    - DJANGO=1.7.8
 
 install:
   - pip install -q Django==$DJANGO --use-mirrors
