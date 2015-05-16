@@ -11,9 +11,10 @@ env:
 install:
   - pip install -q django==$DJANGO --use-mirrors
   - python setup.py install
+  - pip install coveralls
 
 script:
-  - python setup.py test
+  - coverage run --source=django_whoshere setup.py test
 
 after_success:
   - coveralls
