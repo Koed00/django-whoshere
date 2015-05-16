@@ -12,7 +12,7 @@ class TrackMiddleware(object):
         """
         Checks for authenticated user and adds ip and user-agent to the cache
         """
-        if not hasattr(request, 'user'):
+        if not hasattr(request, 'user') or not request.user:
             return
         key = '{}:{}'.format(PREFIX, request.user.pk)
         # Add ip and user agent to cache if it's not there
