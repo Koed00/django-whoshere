@@ -10,8 +10,8 @@ env:
 
 install:
   - pip install -q django==$DJANGO --use-mirrors
+  - pip install pyyaml ua-parser user-agents coveralls
   - python setup.py install
-  - pip install coveralls
 
 script:
   - coverage run --source=django_whoshere setup.py test
