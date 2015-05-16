@@ -22,6 +22,9 @@ class WhosHereTestCase(TestCase):
 
     def test_user_request(self):
         request = self.factory.get('/', HTTP_USER_AGENT=self.user_agent)
+        # anon
+        TrackMiddleware.process_request(request)
+        # authenticated
         request.user = self.user
         TrackMiddleware.process_request(request)
         self.assertNotEqual(cache.get(self.key), None)

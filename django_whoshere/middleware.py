@@ -4,8 +4,6 @@ from django_whoshere.apps import TIMEOUT, PREFIX, get_ip
 
 
 class TrackMiddleware(object):
-    def __init__(self):
-        pass
 
     @staticmethod
     def process_request(request):
