@@ -32,7 +32,7 @@ class WhosHereTestCase(TestCase):
         if parse:
             self.assertEqual(result, '0127.0.0.1Other / Other / Otherunknownunknown')
         else:
-            self.assertEqual(result, '0127.0.0.1unknownunknown')
+            self.assertEqual(result, '0127.0.0.1{}unknownunknown'.format(self.user_agent))
 
     def test_admin_page(self):
         c = Client()
