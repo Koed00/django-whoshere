@@ -25,6 +25,8 @@ class WhosHereTestCase(TestCase):
         response = c.post('/admin/login/?next=/admin/django_whoshere/usersession/',
                           {'username': 'WHosHereTestUser', 'password': 'secretsecretsquirrel'}, follow=True)
         self.assertEqual(response.status_code, 200)
+        response = c.get('/admin/django_whoshere/usersession/1/')
+        self.assertEqual(response.status_code, 200)
 
     def test_user_request(self):
         request = self.factory.get('/', HTTP_USER_AGENT=self.user_agent)
