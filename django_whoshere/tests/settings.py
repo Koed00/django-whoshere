@@ -29,8 +29,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django_whoshere.middleware.TrackMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.security.SecurityMiddleware'
+    'django.contrib.messages.middleware.MessageMiddleware'
 )
 
 CACHES = {
