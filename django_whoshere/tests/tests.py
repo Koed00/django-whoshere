@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.cache import cache
+from django.template import Template, Context
+
 from django.test import TestCase, RequestFactory, Client
 
 from django_whoshere.apps import PREFIX, parse
@@ -19,6 +21,18 @@ class WhosHereTestCase(TestCase):
     def tearDown(self):
         self.user.delete()
         cache.delete(self.key)
+
+    def test_tags(self):
+        request = self.factory.get('/', HTTP_USER_AGENT=self.user_agent)
+        context = Context({'request': request})
+        TrackMiddleware.process_request(request)
+        t = Template('{% load whoshere %}{% active_user_count %}{% active_users as users%}'
+                     '{% your_ip %}{% your_agent %}{% your_city %}{% your_country %}')
+        result = t.render(context)
+        if parse:
+            self.assertEqual(result, '0127.0.0.1Other / Other / Otherunknownunknown')
+        else:
+            self.assertEqual(result, '0127.0.0.1unknownunknown')
 
     def test_admin_page(self):
         c = Client()
