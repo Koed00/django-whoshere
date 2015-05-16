@@ -1,4 +1,6 @@
-#Django WhosHere [![](https://travis-ci.org/Koed00/django-whoshere.svg?branch=master)](https://travis-ci.org/Koed00/django-whoshere) 
+#Django WhosHere 
+[![](https://travis-ci.org/Koed00/django-whoshere.svg?branch=master)](https://travis-ci.org/Koed00/django-whoshere)[![Coverage Status] (https://coveralls.io/repos/Koed00/django-whoshere/badge.svg?branch=master)](https://coveralls.io/r/Koed00/django-whoshere?branch=master)
+
 A lightweight Django Admin plugin showing who's logged in from where using the cache. 
 Supports [Telize](https://www.telize.com), [django-ipware](https://github.com/un33k/django-ipware), [user-agents](https://github.com/selwin/python-user-agents)  and [GeoIP](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/geoip/)
 
