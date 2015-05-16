@@ -11,7 +11,7 @@ class WhosHereTestCase(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
         self.user = User.objects.create_superuser('WHosHereTestUser', 'WHosHereTest@requestfactory.com',
-                                             'secretsecretsquirrel')
+                                                  'secretsecretsquirrel')
         self.key = '{}:{}'.format(PREFIX, self.user.pk)
         self.user_agent = 'Mozilla/5.0'
         cache.delete(self.key)
@@ -22,7 +22,8 @@ class WhosHereTestCase(TestCase):
 
     def test_admin_page(self):
         c = Client()
-        response = c.post('/admin/login/?next=/admin/django_whoshere/usersession/', {'username': 'WHosHereTestUser', 'password': 'secretsecretsquirrel'}, follow=True)
+        response = c.post('/admin/login/?next=/admin/django_whoshere/usersession/',
+                          {'username': 'WHosHereTestUser', 'password': 'secretsecretsquirrel'}, follow=True)
         self.assertEqual(response.status_code, 200)
 
     def test_user_request(self):

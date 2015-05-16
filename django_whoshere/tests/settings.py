@@ -7,11 +7,11 @@ SECRET_KEY = "secret_secret_squirrel"
 ROOT_URLCONF = 'django_whoshere.tests.urls'
 INSTALLED_APPS = (
     'django.contrib.admin',
+    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django_whoshere',
 )
 
@@ -22,8 +22,16 @@ DATABASES = {
     }
 }
 
-MIDDLEWARE_CLASSES = global_settings.MIDDLEWARE_CLASSES + (
-    'django_whoshere.middleware.TrackMiddleware',)
+
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django_whoshere.middleware.TrackMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.security.SecurityMiddleware'
+)
 
 CACHES = {
     'default': {
