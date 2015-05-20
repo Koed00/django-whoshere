@@ -42,11 +42,19 @@ class UserSession(User):
         """ Return city name using Telize or Geoip."""
         return get_city(self.ip)
 
-    def country(self, ):
+    def country(self):
         """
         Returns country name using Telize or GeoIP
         """
         return get_country(self.ip)
+
+    @property
+    def path(self):
+        """
+        Returns path of last tracked request
+        """
+        if self.track:
+            return self.track['path']
 
     @staticmethod
     def active_user_ids():

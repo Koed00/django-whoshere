@@ -12,8 +12,12 @@ class UserSessionAdmin(admin.ModelAdmin):
         'username',
         'ip',
         'user_agent',
+        'path',
         'last_login'
     ]
+
+    def path(self, obj):
+        return '<a href="{0}" target="_blank">{0}</a>'.format(obj.path)
 
     def get_queryset(self, request):
         """Only show users that have tracking info"""
@@ -39,6 +43,8 @@ class UserSessionAdmin(admin.ModelAdmin):
     if GeoIP or TELIZE:
         list_display.insert(2, 'city')
         list_display.insert(3, 'country')
+
+    path.allow_tags = True
 
 
 admin.site.register(UserSession, UserSessionAdmin)

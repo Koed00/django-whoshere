@@ -1,5 +1,8 @@
 #Changelog
 
+##0.1.6
+- Added tracked request path
+
 ##0.1.5
 - Added template tags
 

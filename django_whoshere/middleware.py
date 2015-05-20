@@ -16,5 +16,5 @@ class TrackMiddleware(object):
         # Add ip and user agent to cache if it's not there
         if not cache.get(key):
             cache.set(key,
-                      {'ip': get_ip(request), 'agent': request.META.get('HTTP_USER_AGENT', '')},
+                      {'ip': get_ip(request), 'agent': request.META.get('HTTP_USER_AGENT', ''), 'path': request.path},
                       TIMEOUT)

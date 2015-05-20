@@ -1,13 +1,10 @@
 import os
 
-from django.conf import global_settings
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "secret_secret_squirrel"
 ROOT_URLCONF = 'django_whoshere.tests.urls'
 INSTALLED_APPS = (
     'django.contrib.admin',
-    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -21,7 +18,6 @@ DATABASES = {
         'NAME': ':memory:'
     }
 }
-
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
