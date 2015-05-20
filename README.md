@@ -1,4 +1,6 @@
 #Django WhosHere 
+
+[![Join the chat at https://gitter.im/Koed00/django-whoshere](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Koed00/django-whoshere?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![](https://travis-ci.org/Koed00/django-whoshere.svg?branch=master)](https://travis-ci.org/Koed00/django-whoshere)[![Coverage Status] (https://coveralls.io/repos/Koed00/django-whoshere/badge.svg?branch=master)](https://coveralls.io/r/Koed00/django-whoshere?branch=master)
 
 A lightweight Django Admin plugin showing who's logged in from where using the cache. 
