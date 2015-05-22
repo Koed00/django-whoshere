@@ -58,7 +58,9 @@ def telize_lookup(ip):
     if cache.get(key):
         return cache.get(key)
     try:
-        request = requests.get('https://www.telize.com/geoip/{}'.format(ip))
+        request = requests.get('https://www.telize.com/geoip/{}'.format(ip), timeout=5)
+    except requests.exceptions.Timeout:
+        location = {'city': 'timeout', 'country': 'timeout'}
     except requests.exceptions.RequestException:
         location = {'city': 'error', 'country': 'error'}
     else:
