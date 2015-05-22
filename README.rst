@@ -1,4 +1,4 @@
-Django WhosHere |image0|
+Django WhosHere
 ========================
 
 A lightweight Django Admin plugin showing who's logged in from where
@@ -175,5 +175,3 @@ Todo
 
 -  Add tests
 -  Think of other things to add
-
-.. |image0| image:: https://travis-ci.org/Koed00/django-whoshere.svg?branch=master
