@@ -1,4 +1,6 @@
 #Changelog
+##0.1.6.1
+- Added timeout on Telize lookups to prevent hangups
 
 ##0.1.6
 - Added tracked request path
