@@ -66,7 +66,7 @@ def telize_lookup(ip):
     else:
         data = request.json()
         location = {'city': data.get('city', 'unknown'), 'country': data.get('country', 'unknown')}
-        cache.set(key, location, TIMEOUT)
+        cache.set(key, location, 24 * 60 * 60)
     return location
 
 
@@ -87,8 +87,12 @@ def get_city(ip):
     Gets city location by ip either with Telize or GeoIP
     """
     if GeoIP:
+        key = '{}:geo:{}:city'.format(PREFIX, ip)
+        if cache.get(key):
+            return cache.get(key)
         geo = GeoIP().city(str(ip))
         if geo and geo['city']:
+            cache.set(key, geo['city'], 24 * 60 * 60)
             return geo['city']
         return 'unknown'
     return telize_lookup(ip)['city']
@@ -99,8 +103,12 @@ def get_country(ip):
     Gets country location by ip either with Telize or GeoIP
     """
     if GeoIP:
+        key = '{}:geo:{}:country'.format(PREFIX, ip)
+        if cache.get(key):
+            return cache.get(key)
         geo = GeoIP().country(str(ip))
         if geo and geo['country_name']:
+            cache.set(key, geo['country_name'], 24 * 60 * 60)
             return geo['country_name']
         return 'unknown'
     return telize_lookup(ip)['country']
