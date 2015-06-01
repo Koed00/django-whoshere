@@ -1,4 +1,8 @@
 #Changelog
+
+##0.1.6.2
+- Added 24 hour cache on IP lookups
+
 ##0.1.6.1
 - Added timeout on Telize lookups to prevent hangups
 

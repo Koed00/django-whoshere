@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-whoshere',
-    version='0.1.6.1',
+    version='0.1.6.2',
     author='Ilan Steemers',
     author_email='koed00@gmail.com',
     packages=['django_whoshere'],
