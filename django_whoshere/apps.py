@@ -1,4 +1,8 @@
-from django.apps import AppConfig
+try:
+    from django.apps import AppConfig
+except ImportError:
+    # for older django versions
+    AppConfig = None
 from django.conf import settings
 from django.core.cache import cache
 import requests
@@ -43,10 +47,10 @@ try:
 except ImportError:
     parse = None
 
-
-class SessionAdminConfig(AppConfig):
-    name = 'django_whoshere'
-    verbose_name = LABEL
+if AppConfig:
+    class SessionAdminConfig(AppConfig):
+        name = 'django_whoshere'
+        verbose_name = LABEL
 
 
 def telize_lookup(ip):
