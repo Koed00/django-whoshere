@@ -9,7 +9,7 @@ env:
     - DJANGO=1.7.10
 
 install:
-  - pip install -q django==$DJANGO --use-mirrors
+  - pip install -q django==$DJANGO
   - pip install pyyaml ua-parser user-agents coveralls
   - python setup.py install
 
